@@ -28,6 +28,7 @@ import { useState } from 'react';
 import { IoAdd, IoInformationCircle, IoTrash } from 'react-icons/io5';
 
 import { VlmProvider } from '@main/store/types';
+import { OperatorType } from '@main/store/types';
 
 import { PresetImport } from './PresetImport';
 import { useSetting } from '@renderer/hooks/useSetting';
@@ -389,6 +390,54 @@ export default function Settings() {
                                   placeholder="https://your-utio-endpoint.com/collect"
                                   {...inputProps}
                                 />
+                              </FormControl>
+
+                              <FormControl>
+                                <FormLabel color="gray.700">
+                                  Operator 类型
+                                </FormLabel>
+                                <Field
+                                  as={Select}
+                                  name="useAdbOperator"
+                                  value={values.operatorType}
+                                  {...inputProps}
+                                  onChange={(e) => {
+                                    if (isRemoteAutoUpdatedPreset) return;
+                                    const newValue = e.target.value;
+                                    setFieldValue(
+                                      'useAdbOperator',
+                                      newValue === OperatorType.ADB,
+                                    );
+                                  }}
+                                >
+                                  <option value={OperatorType.NutJS}>
+                                    NutJS (默认)
+                                  </option>
+                                  <option value={OperatorType.ADB}>
+                                    ADB (Android)
+                                  </option>
+                                </Field>
+                                <Text fontSize="xs" color="gray.500" mt={1}>
+                                  选择 ADB 可以控制 Android
+                                  设备，需要确保设备已连接并启用 USB 调试
+                                </Text>
+                              </FormControl>
+
+                              <FormControl>
+                                <FormLabel color="gray.700">
+                                  Android 设备 ID
+                                </FormLabel>
+                                <Field
+                                  as={Input}
+                                  name="androidDeviceId"
+                                  value={values.androidDeviceId}
+                                  placeholder="留空将自动检测第一个可用设备"
+                                  {...inputProps}
+                                />
+                                <Text fontSize="xs" color="gray.500" mt={1}>
+                                  如果连接了多个设备，请指定设备 ID。可以通过
+                                  adb devices 命令查看
+                                </Text>
                               </FormControl>
                             </VStack>
                           </Form>

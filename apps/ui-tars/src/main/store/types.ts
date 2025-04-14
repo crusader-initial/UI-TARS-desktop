@@ -39,4 +39,10 @@ export enum VlmProvider {
   vLLM = 'vLLM',
 }
 
+// 添加 Operator 类型枚举
+export enum OperatorType {
+  NutJS = 'NutJS',
+  ADB = 'ADB',
+}
+
 export type { PresetSource, LocalStore };

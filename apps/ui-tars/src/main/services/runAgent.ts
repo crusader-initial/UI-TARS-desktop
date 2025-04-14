@@ -12,6 +12,7 @@ import { GUIAgent, type GUIAgentConfig } from '@ui-tars/sdk';
 import { markClickPosition } from '@main/utils/image';
 import { UTIOService } from '@main/services/utio';
 import { NutJSElectronOperator } from '../agent/operator';
+import { AdbElectronOperator } from '../agent/operator';
 import { getSystemPrompt } from '../agent/prompts';
 import {
   closeScreenMarker,
@@ -22,7 +23,7 @@ import {
   showScreenWaterFlow,
 } from '@main/window/ScreenMarker';
 import { SettingStore } from '@main/store/setting';
-import { AppState } from '@main/store/types';
+import { AppState, OperatorType } from '@main/store/types';
 
 export const runAgent = async (
   setState: (state: AppState) => void,
@@ -38,9 +39,12 @@ export const runAgent = async (
   showPauseButton();
   showScreenWaterFlow();
 
-  const handleData: GUIAgentConfig<NutJSElectronOperator>['onData'] = async ({
-    data,
-  }) => {
+  // 从设置中获取 deviceId，如果没有则设为 null
+  let deviceId = settings.androidDeviceId || '';
+
+  const handleData: GUIAgentConfig<
+    NutJSElectronOperator | AdbElectronOperator
+  >['onData'] = async ({ data }) => {
     const lastConv = getState().messages[getState().messages.length - 1];
     const { status, conversations, ...restUserData } = data;
     logger.info('[status]', status, conversations.length);
@@ -106,6 +110,33 @@ export const runAgent = async (
     });
   };
 
+  // 如果没有预先配置的设备 ID，可以尝试自动获取
+  if (!deviceId && settings.operatorType === OperatorType.ADB) {
+    try {
+      // 从 AdbOperator 导入 getAndroidDeviceId 函数
+      const { getAndroidDeviceId } = await import('@ui-tars/operator-adb');
+      deviceId = await getAndroidDeviceId();
+
+      if (!deviceId) {
+        logger.error('[runAgent] No Android device found');
+        setState({
+          ...getState(),
+          status: StatusEnum.ERROR,
+          errorMsg: '未找到 Android 设备，请确保设备已连接并启用 USB 调试',
+        });
+        return;
+      }
+    } catch (error) {
+      logger.error('[runAgent] Failed to get Android device ID', error);
+      setState({
+        ...getState(),
+        status: StatusEnum.ERROR,
+        errorMsg: '获取 Android 设备 ID 失败',
+      });
+      return;
+    }
+  }
+
   const guiAgent = new GUIAgent({
     model: {
       baseURL: settings.vlmBaseUrl,
@@ -115,7 +146,11 @@ export const runAgent = async (
     systemPrompt: getSystemPrompt(language),
     logger,
     signal: abortController?.signal,
-    operator: new NutJSElectronOperator(),
+    // 根据设置选择使用哪个 operator
+    operator:
+      settings.operatorType === OperatorType.ADB
+        ? new AdbElectronOperator(deviceId)
+        : new NutJSElectronOperator(),
     onData: handleData,
     onError: ({ error }) => {
       logger.error('[runAgent error]', settings, error);

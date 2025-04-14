@@ -4,7 +4,7 @@
  */
 import { z } from 'zod';
 
-import { VlmProvider } from './types';
+import { VlmProvider, OperatorType } from './types';
 
 const PresetSourceSchema = z.object({
   type: z.enum(['local', 'remote']),
@@ -26,6 +26,10 @@ export const PresetSchema = z.object({
   reportStorageBaseUrl: z.string().url().optional(),
   utioBaseUrl: z.string().url().optional(),
   presetSource: PresetSourceSchema.optional(),
+
+  // ADB 相关配置
+  androidDeviceId: z.string().optional(),
+  operatorType: z.nativeEnum(OperatorType).optional(),
 });
 
 export type PresetSource = z.infer<typeof PresetSourceSchema>;

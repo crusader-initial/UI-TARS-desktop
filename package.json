@@ -26,7 +26,6 @@
     }
   },
   "devDependencies": {
-    "turbo": "^2.4.4",
     "@changesets/cli": "^2.27.11",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
@@ -36,8 +35,8 @@
     "@types/node": "^20.14.8",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
-    "@vitest/coverage-v8": "^3.0.8",
     "@vitest/coverage-istanbul": "^3.0.3",
+    "@vitest/coverage-v8": "^3.0.8",
     "cross-env": "^7.0.3",
     "electron-playwright-helpers": "^1.7.1",
     "eslint": "^8.57.0",
@@ -51,9 +50,13 @@
     "sass-embedded": "^1.83.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
+    "turbo": "^2.4.4",
     "typescript": "^5.7.2"
   },
   "engines": {
     "node": ">=20.x"
+  },
+  "dependencies": {
+    "@ui-tars/operator-adb": "1.2.0-beta.24"
   }
 }

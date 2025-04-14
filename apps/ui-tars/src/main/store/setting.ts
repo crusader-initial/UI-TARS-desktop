@@ -8,7 +8,7 @@ import yaml from 'js-yaml';
 import * as env from '@main/env';
 import { logger } from '@main/logger';
 
-import { LocalStore, VlmProvider } from './types';
+import { LocalStore, OperatorType, VlmProvider } from './types';
 import { validatePreset } from './validate';
 import { BrowserWindow } from 'electron';
 
@@ -20,6 +20,9 @@ export const DEFAULT_SETTING: LocalStore = {
   vlmModelName: env.vlmModelName || '',
   reportStorageBaseUrl: '',
   utioBaseUrl: '',
+  // 添加 ADB 相关默认配置
+  androidDeviceId: '',
+  operatorType: OperatorType.NutJS,
 };
 
 export class SettingStore {
