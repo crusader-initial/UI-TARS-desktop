@@ -398,16 +398,13 @@ export default function Settings() {
                                 </FormLabel>
                                 <Field
                                   as={Select}
-                                  name="useAdbOperator"
+                                  name="operatorType"
                                   value={values.operatorType}
                                   {...inputProps}
                                   onChange={(e) => {
                                     if (isRemoteAutoUpdatedPreset) return;
                                     const newValue = e.target.value;
-                                    setFieldValue(
-                                      'useAdbOperator',
-                                      newValue === OperatorType.ADB,
-                                    );
+                                    setFieldValue('operatorType', newValue);
                                   }}
                                 >
                                   <option value={OperatorType.NutJS}>
