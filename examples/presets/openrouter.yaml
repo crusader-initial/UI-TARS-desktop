@@ -1,0 +1,8 @@
+name: UI TARS Desktop OpenRouter Preset
+language: en
+vlmProvider: OpenRouter
+vlmBaseUrl: https://openrouter.ai/api/v1
+vlmApiKey: your_openrouter_api_key
+vlmModelName: openai/gpt-4-vision-preview
+reportStorageBaseUrl: https://your-report-storage-endpoint.com/upload
+utioBaseUrl: https://your-utio-endpoint.com/collect
