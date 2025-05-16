@@ -184,8 +184,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(zod@3.24.2)
       '@modelcontextprotocol/sdk':
-        specifier: ^1.10.2
-        version: 1.10.2
+        specifier: ^1.11.2
+        version: 1.11.2
       '@playwright/test':
         specifier: ^1.49.1
         version: 1.50.1
@@ -404,8 +404,8 @@ importers:
         specifier: workspace:*
         version: link:../../../../packages/agent-infra/search/search
       '@modelcontextprotocol/sdk':
-        specifier: ^1.10.2
-        version: 1.10.2
+        specifier: ^1.11.2
+        version: 1.11.2
       '@tailwindcss/aspect-ratio':
         specifier: 0.4.2
         version: 0.4.2(tailwindcss@4.1.3)
@@ -876,8 +876,8 @@ importers:
         specifier: workspace:*
         version: link:../mcp-shared
       '@modelcontextprotocol/sdk':
-        specifier: ^1.10.2
-        version: 1.10.2
+        specifier: ^1.11.2
+        version: 1.11.2
       uuid:
         specifier: ^11.1.0
         version: 11.1.0
@@ -916,8 +916,8 @@ importers:
   packages/agent-infra/mcp-servers/browser:
     dependencies:
       '@modelcontextprotocol/sdk':
-        specifier: ^1.10.2
-        version: 1.10.2
+        specifier: ^1.11.2
+        version: 1.11.2
     devDependencies:
       '@agent-infra/browser':
         specifier: workspace:*
@@ -929,23 +929,32 @@ importers:
         specifier: workspace:*
         version: link:../../logger
       '@ghostery/adblocker-puppeteer':
-        specifier: 2.5.0
-        version: 2.5.0(puppeteer@24.4.0(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@6.0.5))
+        specifier: 2.5.2
+        version: 2.5.2(puppeteer@24.4.0(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@6.0.5))
       '@rslib/core':
         specifier: 0.5.3
         version: 0.5.3(typescript@5.7.3)
       '@types/diff':
         specifier: ^5.0.9
         version: 5.2.3
+      '@types/lodash.merge':
+        specifier: 4.6.9
+        version: 4.6.9
       '@types/minimatch':
         specifier: ^5.1.2
         version: 5.1.2
       '@types/node':
         specifier: ^22
         version: 22.13.10
+      commander:
+        specifier: ^13.1.0
+        version: 13.1.0
       cross-fetch:
         specifier: 4.1.0
         version: 4.1.0(encoding@0.1.13)
+      lodash.merge:
+        specifier: 4.6.2
+        version: 4.6.2
       puppeteer-core:
         specifier: 24.7.2
         version: 24.7.2(bufferutil@4.0.9)(utf-8-validate@6.0.5)
@@ -977,8 +986,8 @@ importers:
   packages/agent-infra/mcp-servers/commands:
     dependencies:
       '@modelcontextprotocol/sdk':
-        specifier: ^1.10.2
-        version: 1.10.2
+        specifier: ^1.11.2
+        version: 1.11.2
     devDependencies:
       '@rslib/core':
         specifier: 0.5.3
@@ -1005,8 +1014,8 @@ importers:
   packages/agent-infra/mcp-servers/filesystem:
     dependencies:
       '@modelcontextprotocol/sdk':
-        specifier: ^1.10.2
-        version: 1.10.2
+        specifier: ^1.11.2
+        version: 1.11.2
     devDependencies:
       '@rslib/core':
         specifier: 0.5.3
@@ -1051,8 +1060,8 @@ importers:
   packages/agent-infra/mcp-shared:
     dependencies:
       '@modelcontextprotocol/sdk':
-        specifier: ^1.10.2
-        version: 1.10.2
+        specifier: ^1.11.2
+        version: 1.11.2
       zod:
         specifier: ^3.23.8
         version: 3.24.2
@@ -1060,9 +1069,6 @@ importers:
       '@agent-infra/logger':
         specifier: workspace:*
         version: link:../logger
-      '@ghostery/adblocker-puppeteer':
-        specifier: 2.5.0
-        version: 2.5.0(puppeteer@24.4.0(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@6.0.5))
       '@rslib/core':
         specifier: 0.5.3
         version: 0.5.3(typescript@5.7.3)
@@ -3058,19 +3064,19 @@ packages:
   '@gar/promisify@1.1.3':
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
 
-  '@ghostery/adblocker-content@2.5.0':
-    resolution: {integrity: sha512-Gn9fslZdacx1m1e3/2LSUPWagLObYmIDbkgvZTtgqT/OHc17VbM71AxWEjtC/xzo5K4PI25958PjvidoEH7ufw==}
+  '@ghostery/adblocker-content@2.5.2':
+    resolution: {integrity: sha512-H3e4QZsom7HqVgIBLaoHriqRh27MyXgwC43ClidOXXbCtKn6h7c3wc9TnQssQpXpcyV7HRPmWjMtADzUc+yYKg==}
 
-  '@ghostery/adblocker-extended-selectors@2.5.0':
-    resolution: {integrity: sha512-/GBAwErjktcBKLjCMl/n+jz2MxXFfTmEGw+hcPtAhEin49eSC09PK1TAdzDPDXkCTF4Jmb/zC+MYtbX1eZ1WsQ==}
+  '@ghostery/adblocker-extended-selectors@2.5.2':
+    resolution: {integrity: sha512-Z2MQ4BiPTPG3cI1CFF1cE0IywL1EM2KGnOVkKEx62fnkO0aRyvAeja0jhQvjENtY/hixWLrsSg3MU95Clvq23g==}
 
-  '@ghostery/adblocker-puppeteer@2.5.0':
-    resolution: {integrity: sha512-5SFmit+tMMsZDmjWwstFd6G+GV3HB7+ypZ9/vSKT0vo8FI9/hHm6pLMiif+iMI626+8dHjfjA/cItL9ttAwu3w==}
+  '@ghostery/adblocker-puppeteer@2.5.2':
+    resolution: {integrity: sha512-es/cXFTBnCPor3XBKHPQ/difQDvWXwzpJQaJHbjypTFNLAxUPFaC0RcHtUox+uqxXa4yhVtWF4VNig7H3JFBWQ==}
     peerDependencies:
       puppeteer: '>5'
 
-  '@ghostery/adblocker@2.5.0':
-    resolution: {integrity: sha512-CcmWiTLKxDqYiTlPyOAWr3xeZYXjWlpu6UOCDkk33k0w7jTgVrdvwbXf8Tv4XE0m3uNX6Idfj4H+Umv8L3AiUw==}
+  '@ghostery/adblocker@2.5.2':
+    resolution: {integrity: sha512-/SLxUGPd1JISNGOPsxKfbso+uylDEvEp3umF5gQ3x8YgsEZzD6zYx7H4ZQxAvG1pZIr4p6N9PiAf2N88T1Wo1Q==}
 
   '@google/generative-ai@0.11.5':
     resolution: {integrity: sha512-DviMgrnljEKh6qkDT2pVFW+NEuVhggqBUoEnyy2PNL7l4ewxXRJubk3PctC9yPl1AdRIlhqP7E076QQt+IWuTg==}
@@ -3601,8 +3607,8 @@ packages:
   '@mixmark-io/domino@2.2.0':
     resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
 
-  '@modelcontextprotocol/sdk@1.10.2':
-    resolution: {integrity: sha512-rb6AMp2DR4SN+kc6L1ta2NCpApyA9WYNx3CrTSZvGxq9wH71bRur+zRqPfg0vQ9mjywR7qZdX2RGHOPq3ss+tA==}
+  '@modelcontextprotocol/sdk@1.11.2':
+    resolution: {integrity: sha512-H9vwztj5OAqHg9GockCQC06k1natgcxWQSRpQcPJf6i5+MWBzfKkRtxGbjQf0X2ihii0ffLZCRGbYV2f2bjNCQ==}
     engines: {node: '>=18'}
 
   '@module-federation/error-codes@0.8.4':
@@ -5427,23 +5433,23 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
 
-  '@remusao/guess-url-type@1.3.0':
-    resolution: {integrity: sha512-SNSJGxH5ckvxb3EUHj4DqlAm/bxNxNv2kx/AESZva/9VfcBokwKNS+C4D1lQdWIDM1R3d3UG+xmVzlkNG8CPTQ==}
+  '@remusao/guess-url-type@2.0.0':
+    resolution: {integrity: sha512-L98gV/X/GESt5Tgqq/PxpZYClVqeq6/5InrRKl4elq4qXbdZjHlNTgRhXb1xIaUBkikzv410sXw3QaBUYyXt8g==}
 
-  '@remusao/small@1.3.0':
-    resolution: {integrity: sha512-bydAhJI+ywmg5xMUcbqoR8KahetcfkFywEZpsyFZ8EBofilvWxbXnMSe4vnjDI1Y+SWxnNhR4AL/2BAXkf4b8A==}
+  '@remusao/small@2.0.0':
+    resolution: {integrity: sha512-1ksGCbl1hSeO4CV/uk0qv2vUdZ1ZRdIMzSn0HFsHTJnmWSDk2li+T5eCI9BtweYe0uVQhCvbMjk/3qwsN6fuYg==}
 
-  '@remusao/smaz-compress@1.10.0':
-    resolution: {integrity: sha512-E/lC8OSU+3bQrUl64vlLyPzIxo7dxF2RvNBe9KzcM4ax43J/d+YMinmMztHyCIHqRbz7rBCtkp3c0KfeIbHmEg==}
+  '@remusao/smaz-compress@2.1.0':
+    resolution: {integrity: sha512-IyuzXxd5F1p5WAvA6Td9ny+wh3sj9szMmdZtQ8Fb5/yE4lIwujXCz0e702u62r3XU47qsQcR/CjSRaw65u7iGA==}
 
-  '@remusao/smaz-decompress@1.10.0':
-    resolution: {integrity: sha512-aA5ImUH480Pcs5/cOgToKmFnzi7osSNG6ft+7DdmQTaQEEst3nLq3JLlBEk+gwidURymjbx6DYs60LHaZ415VQ==}
+  '@remusao/smaz-decompress@2.1.0':
+    resolution: {integrity: sha512-TlM/ibBOMiCRniuBjv4x4nIcVbOb1o6DdK+p5OM+zHNndEu9za2C1Bd+PSqnsVCn15Fv2HcLVWGpqh2hKs9uuw==}
 
-  '@remusao/smaz@1.10.0':
-    resolution: {integrity: sha512-GQzCxmmMpLkyZwcwNgz8TpuBEWl0RUQa8IcvKiYlPxuyYKqyqPkCr0hlHI15ckn3kDUPS68VmTVgyPnLNrdVmg==}
+  '@remusao/smaz@2.1.0':
+    resolution: {integrity: sha512-hTn/ZuBY4LYaqvprTdW3U+uU4xrw5JusxqHIhUzroQlrT6l4LFQRi+aJE/SOv09iS7eO/pqg6Ec3Go+gKiWH8A==}
 
-  '@remusao/trie@1.5.0':
-    resolution: {integrity: sha512-UX+3utJKgwCsg6sUozjxd38gNMVRXrY4TNX9VvCdSrlZBS1nZjRPi98ON3QjRAdf6KCguJFyQARRsulTeqQiPg==}
+  '@remusao/trie@2.0.0':
+    resolution: {integrity: sha512-YmVfZrd+igKXJMuAvsNdDnUAyoNw7M+9e2ij6UsaZFZGQzLd75pbxhiuFmdphEXi/s3uXe25+wtFRWjLA2Ho0Q==}
 
   '@rollup/rollup-android-arm-eabi@4.34.6':
     resolution: {integrity: sha512-+GcCXtOQoWuC7hhX1P00LqjjIiS/iOouHXhMdiDSnq/1DGTox4SpUvO52Xm+div6+106r+TcvOeo/cxvyEyTgg==}
@@ -6169,6 +6175,9 @@ packages:
 
   '@types/lodash.isnumber@3.0.3':
     resolution: {integrity: sha512-pymhDUYHc1pBfXLEj1hRwPFm1d4tUFX1BP87W+uAsdA292I2lp0MclmV+oQE/n2rId0jLHYe1WN/RrnsMimYrQ==}
+
+  '@types/lodash.merge@4.6.9':
+    resolution: {integrity: sha512-23sHDPmzd59kUgWyKGiOMO2Qb9YtqRO/x4IhkgNUiPQ1+5MUVqi6bCZeq9nBJ17msjIMbEIO5u+XW4Kz6aGUhQ==}
 
   '@types/lodash.mergewith@4.6.9':
     resolution: {integrity: sha512-fgkoCAOF47K7sxrQ7Mlud2TH023itugZs2bUg8h/KzT+BnZNrR2jAOmaokbLunHNnobXVWOezAeNn/lZqwxkcw==}
@@ -9842,6 +9851,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -11588,8 +11598,11 @@ packages:
   tldts-core@6.1.84:
     resolution: {integrity: sha512-NaQa1W76W2aCGjXybvnMYzGSM4x8fvG2AN/pla7qxcg0ZHbooOPhA8kctmOZUDfZyhDL27OGNbwAeig8P4p1vg==}
 
-  tldts-experimental@6.1.84:
-    resolution: {integrity: sha512-ee8K2ooTDAJhhGT0FrPAtkql/k8MM0/3O3RRAJ4C9pjuO1wwFnfRbSY6fYT7h2mFrdcDzb6Kre591UroI+pTNA==}
+  tldts-core@7.0.6:
+    resolution: {integrity: sha512-HZeeJrplG9y+sJx6VNcMKfbpY9UEq+JI0JRqE66Dm81QmclDgygaKOIwkeX8atmiQraJV2w4JbYI3wfCbw319w==}
+
+  tldts-experimental@7.0.6:
+    resolution: {integrity: sha512-aetoYSqSsxUPBBMuQGc0b3g/q1auci10DrndrzyzPscOHleL+f/Yh2SMVp90vJGc0Q+I/KBfp62xjTwiHHgzNQ==}
 
   tldts@6.1.84:
     resolution: {integrity: sha512-aRGIbCIF3teodtUFAYSdQONVmDRy21REM3o6JnqWn5ZkQBJJ4gHxhw6OfwQ+WkSAi3ASamrS4N4nyazWx6uTYg==}
@@ -14659,27 +14672,27 @@ snapshots:
 
   '@gar/promisify@1.1.3': {}
 
-  '@ghostery/adblocker-content@2.5.0':
+  '@ghostery/adblocker-content@2.5.2':
     dependencies:
-      '@ghostery/adblocker-extended-selectors': 2.5.0
+      '@ghostery/adblocker-extended-selectors': 2.5.2
 
-  '@ghostery/adblocker-extended-selectors@2.5.0': {}
+  '@ghostery/adblocker-extended-selectors@2.5.2': {}
 
-  '@ghostery/adblocker-puppeteer@2.5.0(puppeteer@24.4.0(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@6.0.5))':
+  '@ghostery/adblocker-puppeteer@2.5.2(puppeteer@24.4.0(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@6.0.5))':
     dependencies:
-      '@ghostery/adblocker': 2.5.0
-      '@ghostery/adblocker-content': 2.5.0
+      '@ghostery/adblocker': 2.5.2
+      '@ghostery/adblocker-content': 2.5.2
       puppeteer: 24.4.0(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@6.0.5)
-      tldts-experimental: 6.1.84
+      tldts-experimental: 7.0.6
 
-  '@ghostery/adblocker@2.5.0':
+  '@ghostery/adblocker@2.5.2':
     dependencies:
-      '@ghostery/adblocker-content': 2.5.0
-      '@ghostery/adblocker-extended-selectors': 2.5.0
-      '@remusao/guess-url-type': 1.3.0
-      '@remusao/small': 1.3.0
-      '@remusao/smaz': 1.10.0
-      tldts-experimental: 6.1.84
+      '@ghostery/adblocker-content': 2.5.2
+      '@ghostery/adblocker-extended-selectors': 2.5.2
+      '@remusao/guess-url-type': 2.0.0
+      '@remusao/small': 2.0.0
+      '@remusao/smaz': 2.1.0
+      tldts-experimental: 7.0.6
 
   '@google/generative-ai@0.11.5': {}
 
@@ -15388,7 +15401,7 @@ snapshots:
 
   '@mixmark-io/domino@2.2.0': {}
 
-  '@modelcontextprotocol/sdk@1.10.2':
+  '@modelcontextprotocol/sdk@1.11.2':
     dependencies:
       content-type: 1.0.5
       cors: 2.8.5
@@ -18190,22 +18203,22 @@ snapshots:
       '@react-types/shared': 3.28.0(react@18.3.1)
       react: 18.3.1
 
-  '@remusao/guess-url-type@1.3.0': {}
+  '@remusao/guess-url-type@2.0.0': {}
 
-  '@remusao/small@1.3.0': {}
+  '@remusao/small@2.0.0': {}
 
-  '@remusao/smaz-compress@1.10.0':
+  '@remusao/smaz-compress@2.1.0':
     dependencies:
-      '@remusao/trie': 1.5.0
+      '@remusao/trie': 2.0.0
 
-  '@remusao/smaz-decompress@1.10.0': {}
+  '@remusao/smaz-decompress@2.1.0': {}
 
-  '@remusao/smaz@1.10.0':
+  '@remusao/smaz@2.1.0':
     dependencies:
-      '@remusao/smaz-compress': 1.10.0
-      '@remusao/smaz-decompress': 1.10.0
+      '@remusao/smaz-compress': 2.1.0
+      '@remusao/smaz-decompress': 2.1.0
 
-  '@remusao/trie@1.5.0': {}
+  '@remusao/trie@2.0.0': {}
 
   '@rollup/rollup-android-arm-eabi@4.34.6':
     optional: true
@@ -18954,6 +18967,10 @@ snapshots:
       '@types/lodash': 4.17.15
 
   '@types/lodash.isnumber@3.0.3':
+    dependencies:
+      '@types/lodash': 4.17.15
+
+  '@types/lodash.merge@4.6.9':
     dependencies:
       '@types/lodash': 4.17.15
 
@@ -25654,9 +25671,11 @@ snapshots:
 
   tldts-core@6.1.84: {}
 
-  tldts-experimental@6.1.84:
+  tldts-core@7.0.6: {}
+
+  tldts-experimental@7.0.6:
     dependencies:
-      tldts-core: 6.1.84
+      tldts-core: 7.0.6
 
   tldts@6.1.84:
     dependencies:

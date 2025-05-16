@@ -1,6 +1,6 @@
 {
   "name": "@agent-infra/mcp-server-filesystem",
-  "version": "0.0.1",
+  "version": "1.0.1-beta.9",
   "description": "MCP server for filesystem access",
   "license": "MIT",
   "type": "module",
@@ -15,12 +15,16 @@
   ],
   "scripts": {
     "build": "shx rm -rf dist && rslib build && shx chmod +x dist/*.js",
-    "dev": "npx -y @modelcontextprotocol/inspector tsx src/index.ts",
+    "dev": "npx -y @modelcontextprotocol/inspector tsx src/index.ts /tmp",
     "prepare": "npm run build",
+    "test": "vitest run",
     "watch": "rslib build --watch"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.10.2"
+    "@modelcontextprotocol/sdk": "^1.11.2"
+  },
+  "peerDependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.0"
   },
   "devDependencies": {
     "diff": "^5.1.0",

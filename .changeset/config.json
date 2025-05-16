@@ -6,6 +6,9 @@
     [
       "@ui-tars/*",
       "!@ui-tars/visualizer"
+    ],
+    [
+      "@agent-infra/mcp-*"
     ]
   ],
   "linked": [],
@@ -17,12 +20,6 @@
     "ui-tars-desktop-renderer",
     "agent-tars-app",
     "agent-tars-app-renderer",
-    "@common/*",
-    "@agent-infra/*",
-    "!@agent-infra/logger",
-    "!@agent-infra/browser",
-    "!@agent-infra/shared",
-    "!@agent-infra/mcp-client",
-    "!@agent-infra/mcp-shared"
+    "@common/*"
   ]
 }
