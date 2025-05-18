@@ -1,5 +1,35 @@
 # @agent-infra/mcp-server-browser
 
+## 1.0.1-beta.14
+
+### Patch Changes
+
+- feat: support cdp
+
+## 1.0.1-beta.13
+
+### Patch Changes
+
+- fix: display
+
+## 1.0.1-beta.12
+
+### Patch Changes
+
+- chore: mcp-browser args alignment playwright-mcp
+
+## 1.0.1-beta.11
+
+### Patch Changes
+
+- chore: typo
+
+## 1.0.1-beta.10
+
+### Patch Changes
+
+- feat: add mcp browser proxy-bypass-list
+
 ## 1.0.1-beta.9
 
 ### Patch Changes

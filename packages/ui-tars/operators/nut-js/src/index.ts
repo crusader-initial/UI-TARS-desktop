@@ -78,7 +78,7 @@ export class NutJSOperator extends Operator {
         w: width,
         h: height,
       })
-      .getBuffer('image/jpeg', { quality: 75 });
+      .getBuffer('image/png'); // Use png format to avoid compression
 
     const output = {
       base64: physicalScreenImage.toString('base64'),
@@ -116,6 +116,59 @@ export class NutJSOperator extends Operator {
     //   );
     //   logger.info('[execute] [Region]', region);
     // }
+
+    const getHotkeys = (keyStr: string | undefined): Key[] => {
+      if (keyStr) {
+        const platformCommandKey =
+          process.platform === 'darwin' ? Key.LeftCmd : Key.LeftWin;
+        const platformCtrlKey =
+          process.platform === 'darwin' ? Key.LeftCmd : Key.LeftControl;
+        const keyMap: Record<string, Key> = {
+          return: Key.Enter,
+          enter: Key.Enter,
+          backspace: Key.Backspace,
+          delete: Key.Delete,
+          ctrl: platformCtrlKey,
+          shift: Key.LeftShift,
+          alt: Key.LeftAlt,
+          space: Key.Space,
+          'page down': Key.PageDown,
+          pagedown: Key.PageDown,
+          'page up': Key.PageUp,
+          pageup: Key.PageUp,
+          meta: platformCommandKey,
+          win: platformCommandKey,
+          command: platformCommandKey,
+          cmd: platformCommandKey,
+          comma: Key.Comma,
+          ',': Key.Comma,
+          up: Key.Up,
+          down: Key.Down,
+          left: Key.Left,
+          right: Key.Right,
+          arrowup: Key.Up,
+          arrowdown: Key.Down,
+          arrowleft: Key.Left,
+          arrowright: Key.Right,
+        };
+
+        const keys = keyStr
+          .split(/[\s+]/)
+          .map(
+            (k) =>
+              keyMap[k.toLowerCase()] ||
+              Key[k.toUpperCase() as keyof typeof Key],
+          );
+        logger.info('[NutjsOperator] hotkey: ', keys);
+        return keys;
+      } else {
+        logger.error(
+          '[NutjsOperator] hotkey error: ',
+          `${keyStr} is not a valid key`,
+        );
+        return [];
+      }
+    };
 
     switch (action_type) {
       case 'wait':
@@ -215,50 +268,28 @@ export class NutJSOperator extends Operator {
 
       case 'hotkey': {
         const keyStr = action_inputs?.key || action_inputs?.hotkey;
-        if (keyStr) {
-          const platformCommandKey =
-            process.platform === 'darwin' ? Key.LeftCmd : Key.LeftWin;
-          const platformCtrlKey =
-            process.platform === 'darwin' ? Key.LeftCmd : Key.LeftControl;
-          const keyMap: Record<string, Key> = {
-            return: Key.Enter,
-            enter: Key.Enter,
-            backspace: Key.Backspace,
-            delete: Key.Delete,
-            ctrl: platformCtrlKey,
-            shift: Key.LeftShift,
-            alt: Key.LeftAlt,
-            space: Key.Space,
-            'page down': Key.PageDown,
-            pagedown: Key.PageDown,
-            'page up': Key.PageUp,
-            pageup: Key.PageUp,
-            meta: platformCommandKey,
-            win: platformCommandKey,
-            command: platformCommandKey,
-            cmd: platformCommandKey,
-            comma: Key.Comma,
-            ',': Key.Comma,
-            up: Key.Up,
-            down: Key.Down,
-            left: Key.Left,
-            right: Key.Right,
-            arrowup: Key.Up,
-            arrowdown: Key.Down,
-            arrowleft: Key.Left,
-            arrowright: Key.Right,
-          };
-
-          const keys = keyStr
-            .split(/[\s+]/)
-            .map(
-              (k) =>
-                keyMap[k.toLowerCase()] ||
-                Key[k.toUpperCase() as keyof typeof Key],
-            );
-          logger.info('[NutjsOperator] hotkey: ', keys);
+        const keys = getHotkeys(keyStr);
+        if (keys.length > 0) {
           await keyboard.pressKey(...keys);
-          await keyboard.releaseKey(...keys.reverse());
+          await keyboard.releaseKey(...keys);
+        }
+        break;
+      }
+
+      case 'press': {
+        const keyStr = action_inputs?.key || action_inputs?.hotkey;
+        const keys = getHotkeys(keyStr);
+        if (keys.length > 0) {
+          await keyboard.pressKey(...keys);
+        }
+        break;
+      }
+
+      case 'release': {
+        const keyStr = action_inputs?.key || action_inputs?.hotkey;
+        const keys = getHotkeys(keyStr);
+        if (keys.length > 0) {
+          await keyboard.releaseKey(...keys);
         }
         break;
       }

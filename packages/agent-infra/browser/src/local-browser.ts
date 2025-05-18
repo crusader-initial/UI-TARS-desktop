@@ -59,6 +59,9 @@ export class LocalBrowser extends BaseBrowser {
         '--disable-site-isolation-trials',
         `--window-size=${viewportWidth},${viewportHeight + 90}`,
         options?.proxy ? `--proxy-server=${options.proxy}` : '',
+        options?.proxyBypassList
+          ? `--proxy-bypass-list=${options.proxyBypassList}`
+          : '',
         options?.profilePath
           ? `--profile-directory=${options.profilePath}`
           : '',

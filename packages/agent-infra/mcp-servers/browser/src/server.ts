@@ -6,6 +6,7 @@
  * Copyright (c) 2024 Anthropic, PBC
  * https://github.com/modelcontextprotocol/servers/blob/main/LICENSE
  */
+import os from 'node:os';
 import {
   McpServer,
   ResourceTemplate,
@@ -17,9 +18,13 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { Logger, ConsoleLogger } from '@agent-infra/logger';
 import { z } from 'zod';
-import { ToolSchema } from '@modelcontextprotocol/sdk/types.js';
-import { zodToJsonSchema } from 'zod-to-json-schema';
-import { LaunchOptions, LocalBrowser, Page } from '@agent-infra/browser';
+import {
+  LaunchOptions,
+  LocalBrowser,
+  Page,
+  RemoteBrowser,
+  RemoteBrowserOptions,
+} from '@agent-infra/browser';
 import { PuppeteerBlocker } from '@ghostery/adblocker-puppeteer';
 import fetch from 'cross-fetch';
 import {
@@ -33,27 +38,24 @@ import {
   locateElement,
   scrollIntoViewIfNeeded,
 } from '@agent-infra/browser-use';
-import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import TurndownService from 'turndown';
 // @ts-ignore
 import { gfm } from 'turndown-plugin-gfm';
 import merge from 'lodash.merge';
 import { parseProxyUrl } from './utils.js';
 
-const ToolInputSchema = ToolSchema.shape.inputSchema;
-type ToolInput = z.infer<typeof ToolInputSchema>;
-
 const consoleLogs: string[] = [];
 
 interface GlobalConfig {
   launchOptions?: LaunchOptions;
+  remoteOptions?: RemoteBrowserOptions;
   logger?: Partial<Logger>;
 }
 
 // Global state
 let globalConfig: GlobalConfig = {
   launchOptions: {
-    headless: true,
+    headless: os.platform() === 'linux' && !process.env.DISPLAY,
   },
 };
 let globalBrowser: LocalBrowser['browser'] | undefined;
@@ -129,9 +131,11 @@ async function setInitialBrowser(
 
   // priority 2: create new browser and page
   if (!globalBrowser) {
-    const localBrowser = new LocalBrowser();
-    await localBrowser.launch(globalConfig.launchOptions);
-    globalBrowser = localBrowser.getBrowser();
+    const browser = globalConfig.remoteOptions
+      ? new RemoteBrowser(globalConfig.remoteOptions)
+      : new LocalBrowser();
+    await browser.launch(globalConfig.launchOptions);
+    globalBrowser = browser.getBrowser();
   }
   let currTabsIdx = 0;
 
@@ -352,23 +356,6 @@ export const toolsMap = {
 type ToolNames = keyof typeof toolsMap;
 type ToolInputMap = {
   [K in ToolNames]: z.infer<(typeof toolsMap)[K]['inputSchema']>;
-};
-
-const listTools: Client['listTools'] = async () => {
-  const mcpTools = Object.keys(toolsMap || {}).map((key) => {
-    const name = key as ToolNames;
-    const tool = toolsMap[name];
-    return {
-      // @ts-ignore
-      name: tool?.name || name,
-      description: tool.description,
-      inputSchema: zodToJsonSchema(tool.inputSchema) as ToolInput,
-    };
-  });
-
-  return {
-    tools: mcpTools,
-  };
 };
 
 async function buildDomTree(page: Page) {

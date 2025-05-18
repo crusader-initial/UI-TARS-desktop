@@ -66,6 +66,12 @@ export interface LaunchOptions {
    * Used to route browser traffic through a proxy server
    */
   proxy?: string;
+
+  /**
+   * Proxy bypass list, e.g. '*.example.com,*.test.com'
+   * Used to bypass the proxy server for specific domains
+   */
+  proxyBypassList?: string;
 }
 
 /**

@@ -231,6 +231,14 @@ export class BrowserOperator extends Operator {
           await this.handleHotkey(action_inputs);
           break;
 
+        case 'press':
+          await this.handlePress(action_inputs);
+          break;
+
+        case 'release':
+          await this.handleRelease(action_inputs);
+          break;
+
         case 'scroll':
           await this.handleScroll(action_inputs);
           break;
@@ -403,6 +411,84 @@ export class BrowserOperator extends Operator {
     }
 
     this.logger.info('Hotkey execution completed');
+  }
+
+  private async handlePress(inputs: Record<string, any>) {
+    const page = await this.getActivePage();
+
+    const keyStr = inputs?.key;
+    if (!keyStr) {
+      this.logger.warn('No key specified for press');
+      throw new Error(`No key specified for press`);
+    }
+
+    this.logger.info(`Pressing key: ${keyStr}`);
+
+    const keys = keyStr.split(/[\s+]/);
+    const normalizedKeys: KeyInput[] = keys.map((key: string) => {
+      const lowercaseKey = key.toLowerCase();
+      const keyInput = KEY_MAPPINGS[lowercaseKey];
+
+      if (keyInput) {
+        return keyInput;
+      }
+
+      throw new Error(`Unsupported key: ${key}`);
+    });
+
+    this.logger.info(`Normalized keys for press:`, normalizedKeys);
+
+    // Only press the keys
+    for (const key of normalizedKeys) {
+      await page.keyboard.down(key);
+      await this.delay(50); // 添加小延迟确保按键稳定
+    }
+
+    this.logger.info('Press operation completed');
+  }
+
+  private async handleRelease(inputs: Record<string, any>) {
+    const page = await this.getActivePage();
+
+    const keyStr = inputs?.key;
+    if (!keyStr) {
+      this.logger.warn('No key specified for release');
+      throw new Error(`No key specified for release`);
+    }
+
+    this.logger.info(`Releasing key: ${keyStr}`);
+
+    const keys = keyStr.split(/[\s+]/);
+    const normalizedKeys: KeyInput[] = keys.map((key: string) => {
+      const lowercaseKey = key.toLowerCase();
+      const keyInput = KEY_MAPPINGS[lowercaseKey];
+
+      if (keyInput) {
+        return keyInput;
+      }
+
+      throw new Error(`Unsupported key: ${key}`);
+    });
+
+    this.logger.info(`Normalized keys for release:`, normalizedKeys);
+
+    // Release the keys
+    for (const key of normalizedKeys) {
+      await page.keyboard.up(key);
+      await this.delay(50); // 添加小延迟确保按键稳定
+    }
+
+    // For hotkey combinations that may trigger navigation,
+    // wait for navigation to complete
+    const navigationKeys = ['Enter', 'F5'];
+    if (normalizedKeys.some((key: string) => navigationKeys.includes(key))) {
+      this.logger.info('Waiting for possible navigation after key release');
+      await this.waitForPossibleNavigation(page);
+    } else {
+      await this.delay(500);
+    }
+
+    this.logger.info('Release operation completed');
   }
 
   private async handleScroll(inputs: Record<string, any>) {
