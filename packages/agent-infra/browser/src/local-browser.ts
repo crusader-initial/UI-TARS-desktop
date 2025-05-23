@@ -40,6 +40,9 @@ export class LocalBrowser extends BaseBrowser {
         // This parameter combined with `captureBeyondViewport: false`, will resolve the screenshot blinking issue.
         deviceScaleFactor: 0,
       },
+      ...(options.userDataDir && {
+        userDataDir: options.userDataDir,
+      }),
       args: [
         '--no-sandbox',
         '--mute-audio',

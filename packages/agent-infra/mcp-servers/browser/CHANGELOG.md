@@ -1,5 +1,78 @@
 # @agent-infra/mcp-server-browser
 
+## 1.1.1
+
+### Patch Changes
+
+- a40b3c1: feat: add mcp http server
+- 2598ea6: feat: native support sse and mcp serving by browser mcp
+- 82fe970: fix: hang up
+- 1e12e91: fix: schema empty not right
+- feat: support high performance sse and http server
+- Updated dependencies [a40b3c1]
+- Updated dependencies [82fe970]
+- Updated dependencies
+  - mcp-http-server@1.1.1
+
+## 1.1.1-beta.3
+
+### Patch Changes
+
+- fix: hang up
+- Updated dependencies
+  - mcp-http-server@1.1.1-beta.3
+
+## 1.1.1-beta.2
+
+### Patch Changes
+
+- feat: add mcp http server
+- Updated dependencies
+  - @agent-infra/mcp-http-server@1.1.1-beta.2
+
+## 1.1.1-beta.1
+
+### Patch Changes
+
+- fix: schema empty not right
+
+## 1.1.1-beta.0
+
+### Patch Changes
+
+- feat: native support sse and mcp serving by browser mcp
+
+## 1.1.0
+
+### Minor Changes
+
+- feat(agent-tars): provider mcp servers
+
+### Patch Changes
+
+- 9089c63: fix: version
+- 9089c63: chore: add dumpio
+- 9545e06: chore: mcp-browser args alignment playwright-mcp
+- 0bdfa56: feat: support cdp
+- 9089c63: fix: navigate adblock timeout
+- 2d804f7: chore: typo
+- 030f31d: feat: add mcp browser proxy-bypass-list
+- 4860d9e: feat: new version release
+- 9089c63: feat: launchOptions add args
+- 9089c63: feat: auth parse proxy url username and password
+- 9089c63: fix: adblock
+- 9089c63: chore: update @ghostery/adblocker-puppeteer
+- 9089c63: refactor: mcp servers with high-level api
+- 9089c63: feat: add page proxy authentication
+- eaf5d3b: fix: display
+- 9089c63: chore: error catch
+
+## 1.0.1-beta.15
+
+### Patch Changes
+
+- feat: new version release
+
 ## 1.0.1-beta.14
 
 ### Patch Changes

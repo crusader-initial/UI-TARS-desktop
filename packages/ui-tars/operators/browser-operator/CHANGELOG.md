@@ -1,5 +1,14 @@
 # @ui-tars/operator-browser
 
+## 1.2.1
+
+### Patch Changes
+
+- Updated dependencies [9089c63]
+- Updated dependencies
+  - @agent-infra/browser@0.1.0
+  - @ui-tars/sdk@1.2.1
+
 ## 1.2.1-beta.0
 
 ### Patch Changes

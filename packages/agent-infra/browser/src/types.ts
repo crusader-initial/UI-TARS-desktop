@@ -72,6 +72,13 @@ export interface LaunchOptions {
    * Used to bypass the proxy server for specific domains
    */
   proxyBypassList?: string;
+
+  /**
+   * Path to a user data directory.
+   * {@link https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/user_data_dir.md | see the Chromium docs}
+   * for more info.
+   */
+  userDataDir?: string;
 }
 
 /**
